@@ -4,6 +4,7 @@ package com.cb.rest;
 import com.cb.model.Article;
 import com.cb.search.repository.es.ArticleSearchOperations;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public class ArticleSearchOperationsRest {
 
     @GetMapping("/search/criteria")
     public List<Article> searchArticlesCriteriaQuery(@RequestParam String q) {
-        return articleSearchOperations.searchArticlesCriteriaQuery(q);
+        return articleSearchOperations.searchArticlesCriteriaQuery(q, PageRequest.of(0, 10));
     }
 
     @GetMapping("/search/native")

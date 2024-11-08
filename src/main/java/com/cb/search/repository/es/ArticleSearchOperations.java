@@ -2,6 +2,7 @@ package com.cb.search.repository.es;
 
 
 import com.cb.model.Article;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.client.elc.NativeQuery;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHit;
@@ -36,9 +37,10 @@ public class ArticleSearchOperations {
         return elasticsearchOperations.delete(articleId, Article.class); // Delete article from Elasticsearch
     }
 
-    public List<Article> searchArticlesCriteriaQuery(String q) {
+    public List<Article> searchArticlesCriteriaQuery(String q, Pageable pageable) {
         var criteria = new Criteria("title").fuzzy(q).or(new Criteria("content").fuzzy(q));
         var query = new CriteriaQuery(criteria);
+        query.setPageable(pageable);
         return elasticsearchOperations.search(query, Article.class).getSearchHits()
                 .stream()
                 .map(SearchHit::getContent)
