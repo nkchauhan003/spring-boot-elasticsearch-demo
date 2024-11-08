@@ -1,0 +1,24 @@
+# PostgreSQL configuration
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/articlesdb
+    username: postgres
+    password: root
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+
+  # Elasticsearch configuration
+elasticsearch:
+  url: localhost:9200
+  username: elastic
+  password: =qPglbVVjGEa9TwIk*uj
+
+# SWAGGER
+springdoc:
+  swagger-ui.path: /swagger-ui.html
+  api-docs.path: /v1/api-docs
+
+# Port
+server:
+  port: 8081
