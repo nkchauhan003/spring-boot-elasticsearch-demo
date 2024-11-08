@@ -12,7 +12,6 @@ public class ArticleEntityListener {
 
     private final ArticleSearchRepository articleSearchRepository;
 
-
     public ArticleEntityListener(ArticleSearchRepository articleSearchRepository) {
         this.articleSearchRepository = articleSearchRepository;
     }

@@ -11,7 +11,6 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 @EnableElasticsearchRepositories(basePackages = "com.cb.search.repository.es")
 public class ElasticsearchConfig extends ElasticsearchConfiguration {
 
-
     @Value("${elasticsearch.url}")
     private String url;
 
